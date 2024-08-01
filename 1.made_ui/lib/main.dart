@@ -129,7 +129,6 @@ class App extends StatelessWidget {
                   height: 30,
                 ),
                 const CurrencyCard(
-                  isInverted: false,
                   name: "Euro",
                   amount: "6,428",
                   code: "EUR",
@@ -137,7 +136,6 @@ class App extends StatelessWidget {
                   order: 1,
                 ),
                 const CurrencyCard(
-                  isInverted: true,
                   name: "Bitcoin",
                   amount: "9,785",
                   code: "BTC",
@@ -145,7 +143,6 @@ class App extends StatelessWidget {
                   order: 2,
                 ),
                 const CurrencyCard(
-                  isInverted: false,
                   name: "Dollar",
                   amount: "428",
                   code: "USD",
