@@ -25,16 +25,16 @@ class _HomeScreenState extends State<HomeScreen> {
         totalSeconds -= 1;
       });
     } else {
-      resetTimer();
+      resetTimer(false);
     }
   }
 
-  void resetTimer() {
+  void resetTimer(bool restart) {
     timer.cancel();
     isRunning = false;
     setState(() {
       totalSeconds = twentyFiveMinutes;
-      totalPomodoros += 1;
+      totalPomodoros = restart ? 0 : totalPomodoros + 1;
     });
   }
 
@@ -82,14 +82,25 @@ class _HomeScreenState extends State<HomeScreen> {
           Flexible(
             flex: 2,
             child: Container(
-              alignment: Alignment.center,
-              child: IconButton(
-                icon: const Icon(Icons.play_circle_outlined),
-                iconSize: 92,
-                color: Theme.of(context).cardColor,
-                onPressed: isRunning ? onPausePressed : onStartPressed,
-                isSelected: isRunning,
-                selectedIcon: const Icon(Icons.pause_circle_outline_outlined),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  IconButton(
+                    icon: const Icon(Icons.play_circle_outlined),
+                    iconSize: 92,
+                    color: Theme.of(context).cardColor,
+                    onPressed: isRunning ? onPausePressed : onStartPressed,
+                    isSelected: isRunning,
+                    selectedIcon:
+                        const Icon(Icons.pause_circle_outline_outlined),
+                  ),
+                  IconButton(
+                    icon: const Icon(Icons.restart_alt_outlined),
+                    iconSize: 64,
+                    color: Theme.of(context).textTheme.headlineLarge?.color,
+                    onPressed: () => resetTimer(true),
+                  ),
+                ],
               ),
             ),
           ),
@@ -105,19 +116,25 @@ class _HomeScreenState extends State<HomeScreen> {
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Text(
+                        Text(
                           "Pomodoros",
                           style: TextStyle(
-                            fontSize: 28,
-                            fontWeight: FontWeight.w500,
-                          ),
+                              fontSize: 28,
+                              fontWeight: FontWeight.w500,
+                              color: Theme.of(context)
+                                  .textTheme
+                                  .headlineLarge
+                                  ?.color),
                         ),
                         Text(
                           '$totalPomodoros',
-                          style: const TextStyle(
-                            fontSize: 64,
-                            fontWeight: FontWeight.w600,
-                          ),
+                          style: TextStyle(
+                              fontSize: 64,
+                              fontWeight: FontWeight.w600,
+                              color: Theme.of(context)
+                                  .textTheme
+                                  .headlineLarge
+                                  ?.color),
                         )
                       ],
                     ),
