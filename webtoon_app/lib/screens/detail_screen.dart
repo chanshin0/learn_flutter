@@ -31,6 +31,7 @@ class _DetailScreenState extends State<DetailScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Text(
           widget.webtoon.title,
           style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
