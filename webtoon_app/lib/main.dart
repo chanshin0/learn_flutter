@@ -16,7 +16,7 @@ class WebtoonApp extends StatefulWidget {
 class _WebtoonAppState extends State<WebtoonApp> {
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
+    return MaterialApp(
       home: Flexible(child: HomeScreen()),
     );
   }

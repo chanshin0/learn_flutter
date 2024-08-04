@@ -12,6 +12,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: const Text(
           "Today's 툰s",
           style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
@@ -50,7 +51,6 @@ class HomeScreen extends StatelessWidget {
       scrollDirection: Axis.horizontal,
       itemCount: snapshot.data!.length,
       itemBuilder: (context, index) {
-        print(index);
         final webtoon = snapshot.data![index];
         return WebtoonWidget(webtoon: webtoon);
       },
